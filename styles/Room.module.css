@@ -1,0 +1,225 @@
+/* Room.module.css */
+.roomContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #1a1a2e;
+  padding: 20px;
+  color: white;
+}
+
+.videoGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.videoWrapper {
+  position: relative;
+  width: 100%;
+  max-width:200px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  background-color: #0f3460;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.videoLabel {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.controlsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+  padding: 15px;
+  background-color: rgba(15, 52, 96, 0.5);
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+}
+
+.controlButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: none;
+  background-color: #e94560;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.controlButton:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.controlButton:nth-child(2) {
+  background-color: #3a86ff;
+}
+
+.leaveButton {
+  background-color: #f77f00;
+}
+
+.buttonLabel {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.inactive {
+  background-color: #444;
+}
+
+/* Estilos para el analizador de audio */
+.audioAnalyzer {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
+  padding: 0 10px;
+}
+
+.volumeIcon {
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.analyzerCanvas {
+  flex-grow: 1;
+  height: 30px;
+  border-radius: 4px;
+}
+
+.volumeLevel {
+  margin-left: 10px;
+  font-size: 12px;
+  min-width: 50px;
+  text-align: right;
+}
+
+/* Estilos para la pantalla de conexión */
+.connectContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #1a1a2e;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.roomTitle {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.roomDescription {
+  font-size: 16px;
+  margin-bottom: 30px;
+  opacity: 0.8;
+}
+
+.connectButton {
+  padding: 15px 30px;
+  font-size: 18px;
+  background-color: #4ade80;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(74, 222, 128, 0.4);
+}
+
+.connectButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(74, 222, 128, 0.6);
+}
+
+.roomInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.roomStatus {
+  margin-bottom: 5px;
+}
+
+.errorContainer, .loadingContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #1a1a2e;
+  color: white;
+  font-size: 18px;
+  padding: 20px;
+  text-align: center;
+}
+
+.errorContainer {
+  color: #e94560;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .videoGrid {
+    flex-direction: column;
+  }
+  
+  .controlButton {
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+  }
+  
+  .buttonLabel {
+    font-size: 10px;
+  }
+  
+  .audioAnalyzer {
+    height: 30px;
+  }
+  
+  .analyzerCanvas {
+    height: 20px;
+  }
+}
