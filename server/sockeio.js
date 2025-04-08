@@ -20,19 +20,14 @@ io.on("connection", (socket) => {
     const { rooms } = io.sockets.adapter;
     const room = rooms.get(roomName);
 
-    // Si la sala no existe
     if (room === undefined) {
       socket.join(roomName);
       socket.emit("created");
-    } 
-    // Si hay una persona en la sala
-    else if (room.size === 1) {
+    } else if (room.size === 1) {
       socket.join(roomName);  
       socket.emit("joined");
-    } 
-    // Si la sala está llena (2 personas)
-    else {
-      socket.emit("full");
+    } else {
+      //socket.emit("full");
     }
     console.log('Salas actuales:', rooms);
   });

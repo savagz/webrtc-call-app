@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import useSocket from '../hooks/useSocket';
 import styles from '../styles/Room.module.css';
+import AudioAnalyzer from '../components/AudioAnalyzer';
 
 const ICE_SERVERS = {
   iceServers: [
@@ -14,6 +15,7 @@ const ICE_SERVERS = {
 const Room = () => {
   const [micActive, setMicActive] = useState(true);
   const [cameraActive, setCameraActive] = useState(true);
+  const [isJoined, setIsJoined] = useState(false);
 
   const userVideoRef = useRef();
   const peerVideoRef = useRef();
@@ -54,6 +56,7 @@ const Room = () => {
     socket.on('leave', onPeerLeave);
     socket.on('full', () => {
       logger.warn(`Sala ${roomName} llena`);
+      window.location.href = '/';
     });
     socket.on('offer', handleReceivedOffer);
     socket.on('answer', handleAnswer);
@@ -74,10 +77,11 @@ const Room = () => {
 
   const handleRoomJoined = () => {
     logger.info('Unido a la sala, solicitando acceso a medios');
+    setIsJoined(true);
     navigator.mediaDevices
       .getUserMedia({
         audio: true,
-        video: { width: 100, height: 100 },
+        video: { width: 500, height: 500 },
       })
       .then((stream) => {
         userStreamRef.current = stream;
@@ -99,7 +103,7 @@ const Room = () => {
     navigator.mediaDevices
       .getUserMedia({
         audio: true,
-        video: { width: 100, height: 100 },
+        video: { width: 500, height: 500 },
       })
       .then((stream) => {
         userStreamRef.current = stream;
@@ -266,6 +270,7 @@ const Room = () => {
       rtcConnectionRef.current.close();
       rtcConnectionRef.current = null;
     }
+    router.push('/');
   };
 
   if (connectionError) {
@@ -280,8 +285,11 @@ const Room = () => {
     <div className={styles.roomContainer}>
       <div className={styles.videoGrid}>
         <div className={styles.videoWrapper}>
-          <video autoPlay ref={userVideoRef} className={styles.video} />
+          <video autoPlay ref={userVideoRef} className={styles.video} muted />
           <div className={styles.videoLabel}>Tu video</div>
+          {userStreamRef.current && (
+            <AudioAnalyzer audioStream={userStreamRef.current} />
+          )}
         </div>
         <div className={styles.videoWrapper}>
           <video autoPlay ref={peerVideoRef} className={styles.video} />
@@ -291,10 +299,7 @@ const Room = () => {
       
       <div className={styles.controlsContainer}>
         <button 
-          onClick={(e) => {
-            e.preventDefault();
-            toggleMic();
-          }}
+          onClick={toggleMic} 
           type="button"
           className={`${styles.controlButton} ${!micActive ? styles.inactive : ''}`}
         >
@@ -303,10 +308,7 @@ const Room = () => {
         </button>
         
         <button 
-          onClick={(e) => {
-            e.preventDefault();
-            toggleCamera();
-          }}
+          onClick={toggleCamera} 
           type="button"
           className={`${styles.controlButton} ${!cameraActive ? styles.inactive : ''}`}
         >
@@ -315,16 +317,20 @@ const Room = () => {
         </button>
         
         <button 
-          onClick={(e) => {
-            e.preventDefault();
-            leaveRoom();
-          }} 
+          onClick={leaveRoom} 
           type="button"
           className={`${styles.controlButton} ${styles.leaveButton}`}
         >
           🚪
           <span className={styles.buttonLabel}>Salir</span>
         </button>
+      </div>
+      
+      <div className={styles.roomInfo}>
+        <div className={styles.roomStatus}>
+          {isJoined ? '✅ Conectado a la sala' : '⏳ Esperando conexión...'}
+        </div>
+        <div className={styles.roomId}>ID: {roomName}</div>
       </div>
     </div>
   );

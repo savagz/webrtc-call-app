@@ -199,6 +199,66 @@
   color: #e94560;
 }
 
+/* Actualiza los estilos en Room.module.css */
+
+/* Estilos para el analizador de audio */
+.audioAnalyzerContainer {
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: rgba(15, 52, 96, 0.5);
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.audioAnalyzerLabel {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: white;
+}
+
+.volumeIcon {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+.audioAnalyzer {
+  display: flex;
+  align-items: center;
+  height: 20px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 0 10px;
+}
+
+.analyzerCanvas {
+  flex-grow: 1;
+  height: 15px;
+  border-radius: 4px;
+}
+
+.volumeLevel {
+  margin-left: 10px;
+  font-size: 14px;
+  min-width: 60px;
+  text-align: right;
+  font-weight: bold;
+  color: white;
+}
+
+/* Ajusta el espacio entre elementos */
+.videoGrid {
+  margin-bottom: 10px; /* Reducido para acercar el analizador */
+}
+
+.controlsContainer {
+  margin-top: 20px;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
   .videoGrid {
