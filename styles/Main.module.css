@@ -1,0 +1,163 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  
+  .title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    color: #2d3748;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    letter-spacing: -0.05em;
+    text-align: center;
+    background: linear-gradient(90deg, #2d3748, #4a5568);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .optionsContainer {
+    width: 100%;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 
+                0 1px 2px rgba(0, 0, 0, 0.05),
+                0 0 0 1px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(209, 213, 219, 0.5);
+  }
+  
+  .optionsHeader {
+    padding: 1.5rem;
+    background: linear-gradient(90deg, #3182ce, #4299e1);
+    color: white;
+    font-weight: 600;
+    font-size: 1.25rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .optionsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+  }
+  
+  .optionCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+  }
+  
+  .optionCard:hover, .optionCard.hovered {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+    border-color: #3182ce;
+  }
+  
+  .optionCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #3182ce, #4299e1);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  
+  .optionCard:hover::before, .optionCard.hovered::before {
+    transform: scaleX(1);
+  }
+  
+  .iconContainer {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ebf8ff;
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .optionCard:hover .iconContainer, .optionCard.hovered .iconContainer {
+    background: #bee3f8;
+    transform: scale(1.1);
+  }
+  
+  .icon {
+    width: 40px;
+    height: 40px;
+    color: #3182ce;
+    transition: all 0.3s ease;
+  }
+  
+  .optionCard:hover .icon, .optionCard.hovered .icon {
+    color: #2c5282;
+  }
+  
+  .optionTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: #2d3748;
+    transition: all 0.3s ease;
+  }
+  
+  .optionCard:hover .optionTitle, .optionCard.hovered .optionTitle {
+    color: #3182ce;
+  }
+  
+  .optionDescription {
+    text-align: center;
+    color: #718096;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  
+  @media (max-width: 768px) {
+    .title {
+      font-size: 2.5rem;
+    }
+    
+    .optionsGrid {
+      grid-template-columns: 1fr;
+    }
+    
+    .optionCard {
+      padding: 1.5rem;
+    }
+    
+    .iconContainer {
+      width: 60px;
+      height: 60px;
+    }
+    
+    .icon {
+      width: 30px;
+      height: 30px;
+    }
+  }

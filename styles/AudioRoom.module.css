@@ -1,0 +1,314 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@500;700&display=swap');
+
+.audioRoomContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 1.5rem;
+  background: #f5f7fa;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.audioRoomHeader {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.audioRoomTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2d3748;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.audioIcon {
+  margin-right: 10px;
+  font-size: 1.5rem;
+}
+
+.exitButton {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: #fff;
+  color: #e53e3e;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.exitButton:hover {
+  background-color: #fed7d7;
+  transform: scale(1.05);
+}
+
+.hiddenAudio {
+  display: none;
+}
+
+/* Contenedor principal según el boceto */
+.mainContainer {
+  width: 100%;
+  max-width: 800px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Fila de participantes y cronómetro */
+.participantsRow {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  padding: 1.5rem 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.participantCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.participantAvatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatarCircle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #ebf8ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 0.5rem;
+  border: 2px solid #3182ce;
+}
+
+.avatarIcon {
+  font-size: 2rem;
+}
+
+.disconnected {
+  background: #edf2f7;
+  border-color: #a0aec0;
+  opacity: 0.7;
+}
+
+.participantName {
+  font-weight: 600;
+  color: #2d3748;
+  font-size: 0.9rem;
+}
+
+.muteButton {
+  position: absolute;
+  bottom: -10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: white;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.muteButton:hover {
+  transform: scale(1.1);
+}
+
+.muted {
+  background-color: #fed7d7;
+  color: #e53e3e;
+}
+
+.timerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Fila de analizadores de audio */
+.analyzersRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding: 0.5rem 1rem 1.5rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.analyzerContainer {
+    position: relative;
+  height: 40px;
+  background: #f7fafc;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.emptyAnalyzer {
+  height: 40px;
+  background: #edf2f7;
+  border-radius: 8px;
+}
+
+/* Contenedor de transcripción */
+.transcriptionContainer {
+  padding: 1rem;
+  position: relative;
+  min-height: 150px;
+}
+
+.transcriptionHeader {
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.playButton {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: #3182ce;
+  color: white;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+.playButton:hover {
+  background: #2c5282;
+  transform: translateX(-50%) scale(1.05);
+}
+
+/* Estilos para el componente CallDuration */
+/* Estos estilos sobrescriben los del componente original para adaptarlo al diseño */
+.timerContainer :global(.durationContainer) {
+  margin: 0;
+  background: none;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+}
+
+.timerContainer :global(.durationHeader) {
+  display: none;
+}
+
+.timerContainer :global(.durationDisplay) {
+  background-color: #1a202c;
+  border-radius: 15px;
+  padding: 10px 15px;
+  margin: 0;
+}
+
+.timerContainer :global(.durationDigit) {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 28px;
+  min-width: 40px;
+}
+
+.timerContainer :global(.durationLabel) {
+  display: none;
+}
+
+/* Mensajes de error y carga */
+.errorMessage, .loadingMessage {
+  width: 100%;
+  max-width: 800px;
+  padding: 2rem;
+  text-align: center;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 2rem auto;
+}
+
+.errorMessage {
+  color: #e53e3e;
+  border-left: 4px solid #e53e3e;
+}
+
+.loadingMessage {
+  color: #3182ce;
+  border-left: 4px solid #3182ce;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .participantsRow {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+  }
+  
+  .timerContainer {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    margin-bottom: 1rem;
+  }
+  
+  .participantCard:first-child {
+    grid-row: 2;
+  }
+  
+  .participantCard:last-child {
+    grid-row: 2;
+  }
+  
+  .audioRoomContainer {
+    padding: 1rem;
+  }
+  
+  .audioRoomTitle {
+    font-size: 1.2rem;
+  }
+  
+  .avatarCircle {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .avatarIcon {
+    font-size: 1.5rem;
+  }
+}
